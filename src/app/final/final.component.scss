@@ -1,0 +1,283 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway:400,500');
+
+@import url('https://fonts.googleapis.com/css?family=Play');
+body {
+  background-color: rgba(8, 211, 67, 0.3);
+  padding: 2%;
+  font-family: 'Raleway', sans-serif;
+  font-size: 1em;
+}
+$navBg: rgba(255, 255, 255, 0.6); // white trans
+$is-menuBg: rgba(#afeeee, 0.6); // white trans
+
+/* Base Styles*/
+
+html,
+body {
+  width: 100%;
+  box-sizing: border-box;
+  font-family: 'Play', sans-serif;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+a {
+  &:link {
+    text-decoration: none;
+  }
+  &:visited {
+    text-decoration: none;
+  }
+  &:hover {
+    color: white;
+  }
+  &:active {
+    text-decoration: none;
+  }
+}
+
+/* Layout Styles*/
+
+.l-head {
+  position: fixed;
+  padding-top: 20px;
+  width: 100%;
+  height: 100px;
+  transition: all 1s;
+}
+
+.l-main {
+  width: 100%;
+  background: url('https://tetonist.files.wordpress.com/2014/04/img_1573.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 300px;
+}
+/* Modules Styles*/
+
+// .navi{
+//   margin-top:20px;
+// }
+
+.logo {
+  display: inline-block;
+  margin-top: -10px;
+  color: white;
+  font-size: 35px;
+  font-weight: bold;
+  letter-spacing: 3px;
+  text-shadow: 5px 2px 2px black;
+}
+.menu {
+  padding: 0px;
+  background: $navBg;
+  border-radius: 5px;
+  transition: all 2s;
+  &__item {
+    margin: 0px;
+    padding: 10px 20px;
+    font-weight: bold;
+    text-align: center;
+  }
+}
+
+.section-1 {
+  height: 768px;
+}
+.section-2 {
+  height: 468px;
+}
+.main-msg {
+  margin-top: 150px;
+  text-align: center;
+  background: rgba(225, 225, 225, 0.1);
+  &__btn {
+    margin: 10px;
+    padding: 10px 20px;
+    color: inherit;
+    font-weight: bold;
+    text-align: center;
+    background: rgba(#afeeee, 0.6);
+  }
+}
+
+/* State Styles*/
+
+.form {
+  background-color: #15172b;
+  border-radius: 20px;
+  box-sizing: border-box;
+  height: 700px;
+  padding: 20px;
+  width: 420px;
+}
+
+.title {
+  color: #eee;
+  font-family: sans-serif;
+  font-size: 36px;
+  font-weight: 600;
+  margin-top: 30px;
+}
+
+.subtitle {
+  color: #eee;
+  font-family: sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  margin-top: 10px;
+}
+
+.input-container {
+  height: 50px;
+  position: relative;
+  width: 100%;
+}
+
+.ic1 {
+  margin-top: 40px;
+}
+
+.ic2 {
+  margin-top: 30px;
+}
+
+.input {
+  background-color: #303245;
+  border-radius: 12px;
+  border: 0;
+  box-sizing: border-box;
+  color: #eee;
+  font-size: 18px;
+  height: 100%;
+  outline: 0;
+  padding: 4px 20px 0;
+  width: 100%;
+}
+
+.cut {
+  background-color: #15172b;
+  border-radius: 10px;
+  height: 20px;
+  left: 20px;
+  position: absolute;
+  top: -20px;
+  transform: translateY(0);
+  transition: transform 200ms;
+  width: 76px;
+}
+
+.cut-short {
+  width: 50px;
+}
+
+.input:focus ~ .cut,
+.input:not(:placeholder-shown) ~ .cut {
+  transform: translateY(8px);
+}
+
+.placeholder {
+  color: #65657b;
+  font-family: sans-serif;
+  left: 20px;
+  line-height: 14px;
+  pointer-events: none;
+  position: absolute;
+  transform-origin: 0 50%;
+  transition: transform 200ms, color 200ms;
+  top: 20px;
+}
+
+.input:focus ~ .placeholder,
+.input:not(:placeholder-shown) ~ .placeholder {
+  transform: translateY(-30px) translateX(10px) scale(0.75);
+}
+
+.input:not(:placeholder-shown) ~ .placeholder {
+  color: #808097;
+}
+
+.input:focus ~ .placeholder {
+  color: #dc2f55;
+}
+
+.is-menuSmaller {
+  padding-top: 5px;
+  height: 50px;
+  background: $is-menuBg;
+}
+
+.is-itemHov:hover {
+  background: white;
+}
+input {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  font-size: 1em;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 500;
+  padding: 12px;
+  border: 1px solid #ccc;
+  outline-color: white;
+  transition: background-color 0.5s ease;
+  transition: outline-color 0.5s ease;
+}
+input[name='cardNumber'] {
+  border-bottom: 0;
+}
+input[name='expiry'],
+input[name='cvc'] {
+  width: 50%;
+}
+input[name='expiry'] {
+  float: left;
+  border-right: 0;
+}
+input::placeholder {
+  color: #999;
+  font-weight: 400;
+}
+input:focus {
+  background-color: rgba(130, 245, 249, 0.1);
+  outline-color: #82f5f9;
+}
+input.is-error {
+  background-color: rgba(250, 55, 55, 0.1);
+}
+input.is-error:focus {
+  outline-color: #ffbdbd;
+}
+button {
+  font-size: 1em;
+  font-family: 'Raleway', sans-serif;
+  background-color: #15172b;
+  border: 0;
+  box-shadow: 0px 1px 3px 1px rgba(51, 51, 51, 0.16);
+  color: white;
+  font-weight: 500;
+  letter-spacing: 1px;
+  margin-top: 30px;
+  padding: 12px;
+  text-transform: uppercase;
+  width: 100%;
+}
+button:disabled {
+  opacity: 0.4;
+  background-color: #999999;
+}
+form {
+  background-color: white;
+  box-shadow: 0px 17px 22px 1px rgba(51, 51, 51, 0.16);
+  padding: 40px;
+  margin: 0 auto;
+  max-width: 500px;
+}
+.message {
+  margin-bottom: 20px;
+  color: #fa3737;
+}

@@ -1,0 +1,19 @@
+<h1>Fe-Test</h1>
+<div>
+  <input type="checkbox" id="heroes" [checked]="toggleHeroes" (click)="toggleHeroes()">
+  <label for="heroes">Payment </label>
+
+  <input type="checkbox" id="config" [checked]="showConfig" (click)="toggleConfig()">
+  <label for="config">Add User</label>
+
+  
+</div>
+
+<app-heroes *ngIf="showHeroes"></app-heroes>
+<app-messages></app-messages>
+<app-final *ngIf="showConfig"></app-final>
+<app-display></app-display>
+<app-downloader *ngIf="showDownloader"></app-downloader>
+
+
+
