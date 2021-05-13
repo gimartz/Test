@@ -3,7 +3,9 @@ import { Injectable } from '@angular/core';
 import { Hero } from './hero';import { Store, select } from '@ngrx/store';import { Observable } from 'rxjs';
 import { increment, decrement, } from '../counter.actions';
 import { HeroesService } from './heroes.service';import { AppState } from './hero.state';
-import { ToastrService } from 'ngx-toastr';
+import { ToastrService } from 'ngx-toastr'
+import { FormBuilder,FormGroup } from "@angular/forms"
+import {RxwebValidators } from "@rxweb/reactive-form-validators"
 @Component({
   selector: 'app-heroes',
   templateUrl: './heroes.component.html',
@@ -14,10 +16,26 @@ import { ToastrService } from 'ngx-toastr';
 export class HeroesComponent implements OnInit {
   heroes: Hero[];
   editHero: Hero; // the hero currently being edited
- count$: Observable<heroes>;
+ count$: Observable<Hero>;
+   userFormGroup:FormGroup;
+  creditCardTypes = [
+    "Visa",
+
+    "AmericanExpress",
+
+    "Maestro",
+
+    "JCB",
+
+    "Discover",
+
+    "DinersClub",
+
+    "MasterCard"
+]
   constructor(
     private heroesService: HeroesService,
-    public toastr: ToastrService,
+    public toastr: ToastrService,private formBuilder:FormBuilder,
     private store: Store<{count:AppState}>
   ) {
       this.count$ = store.pipe(select('count'));
@@ -25,7 +43,11 @@ export class HeroesComponent implements OnInit {
 
   ngOnInit() {
     this.getHeroes();
-    
+      this.userFormGroup = this.formBuilder.group({
+      cardType:['Visa'],
+      creditCard:['',RxwebValidators.creditCard ({fieldName:'cardType'})],
+      creditAmount:['',RxwebValidators.creditCard ({fieldName:'cardMonth'})],
+    })
   }
 
   getHeroes(): void {
